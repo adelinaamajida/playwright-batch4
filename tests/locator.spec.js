@@ -16,12 +16,12 @@ test('Ensure user can log in to the website', async ({ page }) => {
     const buttonLogin = page.locator('#login-button');
     await buttonLogin.click();    
 
-    const firstProduct = page.locator('#add-to-cart-sauce-labs-backpack');
-    await expect(firstProduct).toBeVisible(); //validate user successfully move to homepage
-    await firstProduct.click();
+    const backpackProduct = page.locator('#add-to-cart-sauce-labs-backpack');
+    await expect(backpackProduct).toBeVisible(); //validate user successfully move to homepage
+    await backpackProduct.click();
 
-    const secondProduct = page.locator('#add-to-cart-sauce-labs-bike-light');
-    await secondProduct.click();
+    const bikelightProduct = page.locator('#add-to-cart-sauce-labs-bike-light');
+    await bikelightProduct.click();
 
     const buttonCart = page.locator('#shopping_cart_container > a');
     await buttonCart.click();
@@ -54,6 +54,6 @@ test('Ensure user can log in to the website', async ({ page }) => {
     await expect(buttonBackHome).toBeVisible();
     await buttonBackHome.click();
 
-    await expect(buttonCart).toBeVisible(); //validare user redirect back to the homepage
+    await expect(buttonCart).toBeVisible(); //validate user redirect back to the homepage
 
 });
