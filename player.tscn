@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cum2xi4sigq6e"]
+
+[ext_resource type="Script" uid="uid://yi28w3osw5oy" path="res://player.gd" id="1_4flbx"]
+[ext_resource type="Script" uid="uid://state_idle" path="res://actors/player/states/idle.gd" id="2_idle"]
+[ext_resource type="Script" uid="uid://state_run" path="res://actors/player/states/run.gd" id="3_run"]
+[ext_resource type="Script" uid="uid://state_jump" path="res://actors/player/states/jump.gd" id="4_jump"]
+[ext_resource type="Script" uid="uid://state_attack" path="res://actors/player/states/attack.gd" id="5_attack"]
+[ext_resource type="Script" uid="uid://state_dodge" path="res://actors/player/states/dodge.gd" id="6_dodge"]
+[ext_resource type="Script" uid="uid://state_hurt" path="res://actors/player/states/hurt.gd" id="7_hurt"]
+[ext_resource type="Script" uid="uid://state_dead" path="res://actors/player/states/dead.gd" id="8_dead"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4flbx"]
+size = Vector2(64, 32)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sh265"]
+radius = 16.0
+height = 32.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1236080777]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_4flbx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=79108487]
+modulate = Color(0.11325545, 0.49817878, 0.20073509, 1)
+position = Vector2(0, -16)
+texture = SubResource("PlaceholderTexture2D_4flbx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1407429988]
+position = Vector2(7, -16)
+shape = SubResource("CapsuleShape2D_sh265")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=287174316]
+position_smoothing_enabled = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=949652190]
+
+[node name="states" type="Node" parent="." unique_id=states_node]
+Editor/property: "editor/display_folded": true
+
+[node name="idle" type="Node" parent="states" unique_id=idle_state]
+script = ExtResource("2_idle")
+
+[node name="run" type="Node" parent="states" unique_id=run_state]
+script = ExtResource("3_run")
+
+[node name="jump" type="Node" parent="states" unique_id=jump_state]
+script = ExtResource("4_jump")
+
+[node name="attack" type="Node" parent="states" unique_id=attack_state]
+script = ExtResource("5_attack")
+
+[node name="dodge" type="Node" parent="states" unique_id=dodge_state]
+script = ExtResource("6_dodge")
+
+[node name="hurt" type="Node" parent="states" unique_id=hurt_state]
+script = ExtResource("7_hurt")
+
+[node name="dead" type="Node" parent="states" unique_id=dead_state]
+script = ExtResource("8_dead")

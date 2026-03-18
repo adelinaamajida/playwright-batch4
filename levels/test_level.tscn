@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://test_level"]
+
+[ext_resource type="PackedScene" uid="uid://player_scene" path="res://player.tscn" id="1_player"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_floor"]
+size = Vector2(32, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1280, 32)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_platform"]
+size = Vector2(192, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_platform"]
+size = Vector2(192, 32)
+
+[node name="TestLevel" type="Node2D"]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(640, 584)
+
+[node name="Sprite2D" type="Sprite2D" parent="Floor"]
+texture = SubResource("PlaceholderTexture2D_floor")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(300, 450)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform1"]
+texture = SubResource("PlaceholderTexture2D_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Platform2" type="StaticBody2D" parent="."]
+position = Vector2(900, 350)
+
+[node name="Sprite2D" type="Sprite2D" parent="Platform2"]
+texture = SubResource("PlaceholderTexture2D_platform")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform2"]
+shape = SubResource("RectangleShape2D_platform")
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(200, 500)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+rotation = -1.5708
